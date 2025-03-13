@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- 🔹 기본 앱 테마 -->
-    <style name="Theme.CheckStagram" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-    </style>
 
     <style name="Theme.CheckStagram.Splash" parent="Theme.CheckStagram">
         <item name="android:windowSplashScreenBackground">@android:color/transparent</item>
-
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/start_logo</item>
     </style>
 </resources>
