@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- "다음" 버튼 아이콘 -->
+    <item
+        android:id="@+id/action_next"
+        android:icon="@drawable/next_green_thin_icon"
+        android:title="@string/sp_next"
+        app:showAsAction="always"/>
+</menu>
