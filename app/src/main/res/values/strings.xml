@@ -51,6 +51,12 @@
     <string name="login_username_hint">사용자 이름</string>
     <string name="login_password_hint">비밀번호</string>
 
+<!--  feed  -->
+    <string name="feed_title">feed</string>
+    <string name="cf_title">cf</string>
+    <string name="setting_title">setting</string>
+
+
 <!--  select_picture  -->
     <string name="sp_title">새 게시물</string>
     <string name="sp_next">다음</string>

@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.checkmate.checkstagram.databinding.ActivitySplashBinding
-import com.checkmate.checkstagram.presentation.ui.base.BaseActivity
+import com.checkmate.checkstagram.presentation.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashActivity: BaseActivity<ActivitySplashBinding> (
+class SplashActivity: BaseActivity<ActivitySplashBinding>(
     ActivitySplashBinding::inflate
 ){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +21,7 @@ class SplashActivity: BaseActivity<ActivitySplashBinding> (
     }
 
     private fun moveToLoginActivity() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoginFragment::class.java)
         startActivity(intent)
         finish()
     }
