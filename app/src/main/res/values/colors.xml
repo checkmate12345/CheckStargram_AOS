@@ -9,6 +9,7 @@
 
     <color name="primary">#ABD0BB</color>
     <color name="primary_dark">#216554</color>
+    <color name="primary_light">#D5EADE</color>
 
     <color name="gradient1">#F1ECC9</color>
     <color name="gradient2">#CDE5C4</color>

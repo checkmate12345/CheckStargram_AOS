@@ -1,6 +1,51 @@
 <resources>
     <string name="app_name">CheckStagram</string>
 
+    <!--  create_post  -->
+    <string name="cp_toolbar_title">새 게시물</string>
+    <string name="edittext_hint">문구 추가...</string>
+    <string name="description_tag_icon">사람 태그 아이콘</string>
+    <string name="textview_tag">사람 태그</string>
+    <string name="description_location_icon">위치 추가 아이콘</string>
+    <string name="textview_location">위치 추가</string>
+    <string name="description_music_icon">음악 추가 아이콘</string>
+    <string name="textview_music">음악 추가</string>
+    <string name="description_ai_check_icon">AI 게시물 검사 아이콘</string>
+    <string name="textview_ai_check_title">AI 게시물 검사</string>
+    <string name="textview_ai_check_content">AI로 게시물을 올리기 전에 내 게시물이 인터넷 상 논란 위험이 없는지 검사하세요.</string>
+    <string name="description_ai_set_icon">AI 검사 설정 아이콘</string>
+    <string name="textview_ai_set_title">AI 게시물 검사 항목 설정</string>
+    <string name="textview_ai_set_content">AI가 게시물을 검사할 때 어떤 항목을 검사할지 선택하세요.</string>
+    <string name="description_eye_icon">사람 태그 아이콘</string>
+    <string name="textview_eye">사람 태그</string>
+    <string name="description_sharing_icon">공유할 위치 아이콘</string>
+    <string name="textview_sharing">함께 공유할 위치...</string>
+    <string name="description_option_icon">옵션 더 보기 아이콘</string>
+    <string name="textview_option">옵선 더 보기</string>
+    <string name="button_sharing">공유하기</string>
+
+    <!--  set_check_list  -->
+    <string name="sc_toolbar_title">체크 항목 설정</string>
+    <string name="sc_danger_check">위험 요소 체크</string>
+    <string name="cigarette">담배</string>
+    <string name="lighter">라이터</string>
+    <string name="soju">소주</string>
+    <string name="whiskey">양주</string>
+    <string name="beer">맥주</string>
+    <string name="sc_brand_check">브랜드 체크</string>
+    <string name="louisvuitton">루이비통</string>
+    <string name="hermes">에르메스</string>
+    <string name="chanel">샤넬</string>
+    <string name="gucci">구찌</string>
+    <string name="dior">디올</string>
+    <string name="sc_it_check">IT 제품 체크</string>
+    <string name="apple">애플</string>
+    <string name="samsung">삼성</string>
+    <string name="sc_food_check">식음료 체크</string>
+    <string name="cocacola">코카콜라</string>
+    <string name="pepsi">펩시콜라</string>
+    <string name="sc_set_btn">설정하기</string>
+
 <!--  login  -->
     <string name="login">로그인</string>
     <string name="login_username_hint">사용자 이름</string>
