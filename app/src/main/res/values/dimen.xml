@@ -4,4 +4,7 @@
     <dimen name="side_margin">20dp</dimen>
     <dimen name="bottom_margin">250dp</dimen>
 
+    <dimen name="text_size_big">20sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
 </resources>
