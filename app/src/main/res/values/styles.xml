@@ -10,4 +10,11 @@
         <item name="cornerRadius">8dp</item>
         <item name="android:padding">4dp</item>
     </style>
+    <!-- 🔹 기본 앱 테마 -->
+    <style name="Theme.CheckStagram" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    </style>
+
+    <style name="Theme.CheckStagram.Splash" parent="Theme.CheckStagram">
+        <item name="android:windowSplashScreenBackground">@android:color/transparent</item>
+    </style>
 </resources>

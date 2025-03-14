@@ -46,4 +46,14 @@
     <string name="pepsi">펩시콜라</string>
     <string name="sc_set_btn">설정하기</string>
 
+<!--  login  -->
+    <string name="login">로그인</string>
+    <string name="login_username_hint">사용자 이름</string>
+    <string name="login_password_hint">비밀번호</string>
+
+<!--  select_picture  -->
+    <string name="sp_title">새 게시물</string>
+    <string name="sp_next">다음</string>
+    <string name="sp_recent">최근 항목 ></string>
+
 </resources>

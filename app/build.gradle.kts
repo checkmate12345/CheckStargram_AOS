@@ -79,6 +79,8 @@ dependencies {
     // ViewPager2
     implementation(libs.androidx.viewpager2)
 
+    // Splash
+    implementation(libs.androidx.core.splashscreen)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
