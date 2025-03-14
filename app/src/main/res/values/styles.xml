@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="CheckButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="elevation">4dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:padding">4dp</item>
+    </style>
     <!-- 🔹 기본 앱 테마 -->
     <style name="Theme.CheckStagram" parent="Theme.MaterialComponents.DayNight.NoActionBar">
     </style>
 
     <style name="Theme.CheckStagram.Splash" parent="Theme.CheckStagram">
         <item name="android:windowSplashScreenBackground">@android:color/transparent</item>
-
     </style>
 </resources>
