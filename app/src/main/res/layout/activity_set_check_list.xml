@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sc_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    tools:context=".presentation.ui.SetCheckListActivity">
+
+    <!--  Toolbar  -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/sc_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="@dimen/top_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/sc_toolbar_title"
+        app:titleTextColor="@color/primary_dark" />
+
+    <!--  위험 요소 체크 TextView  -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_danger_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginStart="@dimen/side_margin"
+        android:text="@string/sc_danger_check"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/sc_toolbar"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!--  위험 요소 체크 box  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_danger"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/side_margin"
+        android:background="@drawable/rounded_bold_bolder"
+        app:layout_constraintTop_toBottomOf="@id/tv_danger_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_danger1"
+            style="@style/CheckButton"
+            android:text="@string/cigarette"
+            app:layout_constraintStart_toStartOf="@id/cl_danger"
+            app:layout_constraintEnd_toStartOf="@id/btn_danger2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_danger2"
+            style="@style/CheckButton"
+            android:text="@string/lighter"
+            app:layout_constraintStart_toEndOf="@id/btn_danger1"
+            app:layout_constraintEnd_toStartOf="@id/btn_danger3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_danger3"
+            style="@style/CheckButton"
+            android:text="@string/soju"
+            app:layout_constraintStart_toEndOf="@id/btn_danger2"
+            app:layout_constraintEnd_toStartOf="@id/btn_danger4"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_danger4"
+            style="@style/CheckButton"
+            android:text="@string/whiskey"
+            app:layout_constraintStart_toEndOf="@id/btn_danger3"
+            app:layout_constraintEnd_toStartOf="@id/btn_danger5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_danger5"
+            style="@style/CheckButton"
+            android:text="@string/beer"
+            app:layout_constraintStart_toEndOf="@id/btn_danger4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  브랜드 체크 TextView  -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_brand_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="@dimen/side_margin"
+        android:text="@string/sc_brand_check"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_danger" />
+
+    <!--  브랜드 체크 box  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_brand"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/side_margin"
+        android:background="@drawable/rounded_bold_bolder"
+        app:layout_constraintTop_toBottomOf="@id/tv_brand_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_brand1"
+            style="@style/CheckButton"
+            android:text="@string/louisvuitton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_brand2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_brand2"
+            style="@style/CheckButton"
+            android:text="@string/chanel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_brand1"
+            app:layout_constraintEnd_toStartOf="@id/btn_brand3" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_brand3"
+            style="@style/CheckButton"
+            android:text="@string/hermes"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_brand2"
+            app:layout_constraintEnd_toStartOf="@id/btn_brand4" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_brand4"
+            style="@style/CheckButton"
+            android:text="@string/gucci"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_brand3"
+            app:layout_constraintEnd_toStartOf="@id/btn_brand5" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_brand5"
+            style="@style/CheckButton"
+            android:text="@string/dior"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_brand4"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  IT 제품 체크 TextView  -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_it_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="@dimen/side_margin"
+        android:text="@string/sc_it_check"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_brand" />
+
+    <!--  IT 제품 체크 box  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_it"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/side_margin"
+        android:background="@drawable/rounded_bold_bolder"
+        app:layout_constraintTop_toBottomOf="@id/tv_it_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_it1"
+            style="@style/CheckButton"
+            android:text="@string/apple"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_it2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_it2"
+            style="@style/CheckButton"
+            android:text="@string/samsung"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_it1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  식음료 체크 TextView  -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_food_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginStart="@dimen/side_margin"
+        android:text="@string/sc_food_check"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_it" />
+
+    <!--  식음료 체크 box  -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_food"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/side_margin"
+        android:background="@drawable/rounded_bold_bolder"
+        app:layout_constraintTop_toBottomOf="@id/tv_food_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_food1"
+            style="@style/CheckButton"
+            android:text="@string/cocacola"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_food2" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_food2"
+            style="@style/CheckButton"
+            android:text="@string/pepsi"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_food1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="52dp"
+        android:backgroundTint="@color/white_translucent_30"
+        android:text="@string/sc_set_btn"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_food"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
