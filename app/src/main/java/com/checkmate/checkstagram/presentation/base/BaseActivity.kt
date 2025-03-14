@@ -1,4 +1,4 @@
-package com.checkmate.checkstagram.presentation.ui.base
+package com.checkmate.checkstagram.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

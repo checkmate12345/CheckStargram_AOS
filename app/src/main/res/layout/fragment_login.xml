@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="vm"
+            type="com.checkmate.checkstagram.presentation.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,6 +106,7 @@
             android:hint="@string/login_username_hint"
             android:autofillHints="name"
             android:inputType="text"
+            android:text="@={vm.userName}"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:textAppearance="@style/text_medium_regular"
@@ -121,6 +124,7 @@
             android:autofillHints="password"
             android:hint="@string/login_password_hint"
             android:inputType="textPassword"
+            android:text="@={vm.password}"
             android:textColorHint="@color/white"
             android:textColor="@color/white"
             android:textAppearance="@style/text_medium_regular"
