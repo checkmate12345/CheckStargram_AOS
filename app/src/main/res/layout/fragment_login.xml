@@ -140,6 +140,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/login"
+            android:textColor="@color/white"
             android:textAppearance="@style/text_big_bold"
             android:backgroundTint="@android:color/transparent"
             android:insetLeft="0dp"

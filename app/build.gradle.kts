@@ -79,6 +79,7 @@ dependencies {
 
     // ViewPager2
     implementation(libs.androidx.viewpager2)
+    implementation(libs.dotsindicator)
 
     // Splash
     implementation(libs.androidx.core.splashscreen)
