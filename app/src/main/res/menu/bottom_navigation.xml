@@ -9,7 +9,7 @@
         android:icon="@drawable/home_black_icon"/>
 
     <item
-        android:id="@+id/selectPictureFragment"
+        android:id="@+id/selectMediaFragment"
         android:title="@string/cp_title"
         app:showAsAction="always"
         android:icon="@drawable/plus_black_icon"/>

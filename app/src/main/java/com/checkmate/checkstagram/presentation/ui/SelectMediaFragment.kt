@@ -9,10 +9,13 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
+import com.checkmate.checkstagram.R
 import com.checkmate.checkstagram.databinding.FragmentSelectMediaBinding
 import com.checkmate.checkstagram.presentation.adapter.PickMediaAdapter
+import com.checkmate.checkstagram.presentation.model.SelectedMediaInfo
 import com.checkmate.checkstagram.presentation.viewmodel.SelectMediaViewModel
 import com.checkmate.checkstagram.util.repeatOnStarted
 import com.greener.presentation.ui.base.BaseFragment
@@ -32,6 +35,7 @@ class SelectMediaFragment: BaseFragment<FragmentSelectMediaBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         binding.vm = viewModel
+        setupToolbar()
         initRV()
 
         // 1️⃣ 권한 확인 후 미디어 로드
@@ -57,6 +61,23 @@ class SelectMediaFragment: BaseFragment<FragmentSelectMediaBinding>(
                 Glide.with(requireContext())
                     .load(uri)
                     .into(binding.ivSpSelectedImage)
+            }
+        }
+    }
+
+    private fun setupToolbar() {
+        binding.tbSp.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_next -> {
+                    val selectedMediaList = viewModel.selectedMediaList.value
+                    val selectedMediaParcelableList = selectedMediaList.map { SelectedMediaInfo(it) }.toTypedArray()
+                    if (selectedMediaList.isEmpty().not()) {
+                        val action = SelectMediaFragmentDirections.actionSelectMediaFragmentToCreatePostFragment(selectedMediaParcelableList)
+                        findNavController().navigate(action)
+                    }
+                    true
+                }
+                else -> false
             }
         }
     }

@@ -20,13 +20,43 @@
         android:label="FeedFragment"
         tools:layout="@layout/fragment_feed"/>
     <fragment
-        android:id="@+id/selectPictureFragment"
+        android:id="@+id/selectMediaFragment"
         android:name="com.checkmate.checkstagram.presentation.ui.SelectMediaFragment"
         android:label="SelectPictureFragment"
-        tools:layout="@layout/fragment_select_media"/>
+        tools:layout="@layout/fragment_select_media">
+        <action
+            android:id="@+id/action_selectMediaFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment">
+            <argument
+                android:name="selectedMediaList"
+                app:argType="com.checkmate.checkstagram.presentation.model.SelectedMediaInfo[]"
+                app:nullable="true"/>
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/settingCheckFragment"
         android:name="com.checkmate.checkstagram.presentation.ui.SettingCheckFragment"
         android:label="SettingCheckFragment"
-        tools:layout="@layout/fragment_setting_check"/>
+        tools:layout="@layout/fragment_setting_check">
+        <action
+            android:id="@+id/action_settingCheckFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.checkmate.checkstagram.presentation.ui.CreatePostFragment"
+        android:label="CreatePostFragment"
+        tools:layout="@layout/fragment_create_post">
+        <argument
+            android:name="selectedMediaList"
+            app:argType="com.checkmate.checkstagram.presentation.model.SelectedMediaInfo[]"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_createPostFragment_to_settingCheckFragment"
+            app:destination="@id/settingCheckFragment" />
+        <action
+            android:id="@+id/action_createPostFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+    </fragment>
 </navigation>

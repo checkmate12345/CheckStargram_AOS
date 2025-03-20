@@ -35,6 +35,8 @@
             android:layout_marginHorizontal="@dimen/side_margin"
             android:scaleType="centerCrop"
             android:layout_marginTop="24dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/tb_sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
