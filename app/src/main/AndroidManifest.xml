@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+
     <application
         android:name=".HiltApplication"
         android:allowBackup="true"
@@ -14,12 +17,6 @@
         android:theme="@style/Theme.CheckStagram"
         tools:targetApi="31">
 
-        <activity
-            android:name=".presentation.ui.SetCheckListActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.CreatePostActivity"
-            android:exported="false" />
         <activity
             android:name=".presentation.ui.MainActivity"
             android:exported="true"

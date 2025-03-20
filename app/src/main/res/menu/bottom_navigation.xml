@@ -9,14 +9,14 @@
         android:icon="@drawable/home_black_icon"/>
 
     <item
-        android:id="@+id/cfFragment"
-        android:title="@string/feed_title"
+        android:id="@+id/selectMediaFragment"
+        android:title="@string/cp_title"
         app:showAsAction="always"
         android:icon="@drawable/plus_black_icon"/>
 
     <item
-        android:id="@+id/settingFragment"
-        android:title="@string/feed_title"
+        android:id="@+id/settingCheckFragment"
+        android:title="@string/sc_title"
         app:showAsAction="always"
         android:icon="@drawable/set_black_icon"/>
 </menu>
