@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.checkmate.checkstagram.presentation.viewmodel.SelectMediaViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/x_white_icon"
+            app:navigationIconTint="@color/black"
+            app:title="@string/sp_toolbar_title"
+            app:titleCentered="true"
+            android:elevation="2dp"
+            app:menu="@menu/cp_menu_toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_sp_selected_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/side_margin"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tb_sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            tools:src="@tools:sample/backgrounds/scenic"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_sp_recent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gray"
+            android:layout_marginTop="24dp"
+            android:paddingHorizontal="@dimen/side_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_sp_selected_image">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_sp_recent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sp_recent"
+                android:textAppearance="@style/text_medium_bold"
+                android:textColor="@color/white"
+                android:layout_marginVertical="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_sp_duplicate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/duplicate_icon"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_cp_photo_picker"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cl_sp_recent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:listitem="@layout/item_pick_media"
+            tools:itemCount="9"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

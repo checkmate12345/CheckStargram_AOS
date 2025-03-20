@@ -75,7 +75,7 @@ dependencies {
 
     // Glide
     implementation(libs.glide.core)
-    kapt(libs.glide.compiler) // Glide의 Annotation Processor (옵션)
+    kapt(libs.glide.compiler)
 
     // ViewPager2
     implementation(libs.androidx.viewpager2)

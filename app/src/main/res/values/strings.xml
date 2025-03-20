@@ -2,6 +2,7 @@
     <string name="app_name">CheckStagram</string>
 
     <!--  create_post  -->
+    <string name="cp_title">create post</string>
     <string name="cp_toolbar_title">새 게시물</string>
     <string name="edittext_hint">문구 추가...</string>
     <string name="description_tag_icon">사람 태그 아이콘</string>
@@ -25,6 +26,7 @@
     <string name="button_sharing">공유하기</string>
 
     <!--  set_check_list  -->
+    <string name="sc_title">set check</string>
     <string name="sc_toolbar_title">체크 항목 설정</string>
     <string name="sc_danger_check">위험 요소 체크</string>
     <string name="cigarette">담배</string>
@@ -41,10 +43,10 @@
     <string name="sc_it_check">IT 제품 체크</string>
     <string name="apple">애플</string>
     <string name="samsung">삼성</string>
-    <string name="sc_food_check">식음료 체크</string>
+    <string name="sc_food_check">식 · 음료 체크</string>
     <string name="cocacola">코카콜라</string>
     <string name="pepsi">펩시콜라</string>
-    <string name="sc_set_btn">설정하기</string>
+    <string name="sc_set_btn">체크 항목으로 설정하기</string>
 
 <!--  login  -->
     <string name="login">로그인</string>
@@ -56,9 +58,9 @@
     <string name="cf_title">cf</string>
     <string name="setting_title">setting</string>
 
-
 <!--  select_picture  -->
-    <string name="sp_title">새 게시물</string>
+    <string name="sp_title">select picture</string>
+    <string name="sp_toolbar_title">새 게시물</string>
     <string name="sp_next">다음</string>
     <string name="sp_recent">최근 항목 ></string>
 

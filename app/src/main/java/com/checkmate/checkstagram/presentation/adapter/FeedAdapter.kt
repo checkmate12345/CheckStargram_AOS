@@ -24,7 +24,8 @@ class FeedAdapter(): ListAdapter<FeedInfo, FeedAdapter.ViewHolder>(diffUtil) {
         fun bind(item: FeedInfo) {
             binding.feed = item
 
-            val feedMediaAdapter = FeedMediaAdapter(item.mediaType)
+            val feedMediaAdapter = FeedMediaAdapter()
+            feedMediaAdapter.submitList(item.medias)
             binding.vpItemFeed.adapter = feedMediaAdapter
             binding.diItemFeed.attachTo(binding.vpItemFeed)
         }

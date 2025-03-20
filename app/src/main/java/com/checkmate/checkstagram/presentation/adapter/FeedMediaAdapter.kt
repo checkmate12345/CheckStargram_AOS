@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.checkmate.checkstagram.databinding.ItemFeedImageBinding
 import com.checkmate.checkstagram.domain.model.MediaInfo
 
-class FeedMediaAdapter(
-    private val feedImages: List<MediaInfo>
-) : ListAdapter<MediaInfo, FeedMediaAdapter.ViewHolder>(diffUtil){
+class FeedMediaAdapter : ListAdapter<MediaInfo, FeedMediaAdapter.ViewHolder>(diffUtil){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedMediaAdapter.ViewHolder =
         ViewHolder(ItemFeedImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -23,7 +21,6 @@ class FeedMediaAdapter(
         private val binding: ItemFeedImageBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: MediaInfo){
-            binding.media = item
         }
     }
 

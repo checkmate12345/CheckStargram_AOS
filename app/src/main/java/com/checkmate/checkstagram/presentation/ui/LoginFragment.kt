@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.checkmate.checkstagram.R
 import com.checkmate.checkstagram.databinding.FragmentLoginBinding
 import com.checkmate.checkstagram.presentation.viewmodel.LoginViewModel
 import com.checkmate.checkstagram.util.repeatOnStarted

@@ -25,7 +25,7 @@ class FeedViewModel @Inject constructor(
             val tempList = listOf( FeedInfo(
                 username = "for_everyoung10",
                 profileImage = "",
-                mediaType = emptyList(),
+                medias = emptyList(),
                 description = "",
                 likes = 1234,
                 comments = 4321,
@@ -35,7 +35,7 @@ class FeedViewModel @Inject constructor(
                 FeedInfo(
                     username = "for_everyoung10",
                     profileImage = "",
-                    mediaType = emptyList(),
+                    medias = emptyList(),
                     description = "",
                     likes = 1234,
                     comments = 4321,
@@ -45,7 +45,7 @@ class FeedViewModel @Inject constructor(
                 FeedInfo(
                     username = "for_everyoung10",
                     profileImage = "",
-                    mediaType = emptyList(),
+                    medias = emptyList(),
                     description = "",
                     likes = 1234,
                     comments = 4321,

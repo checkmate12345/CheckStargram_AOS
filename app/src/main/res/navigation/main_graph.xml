@@ -19,4 +19,14 @@
         android:name="com.checkmate.checkstagram.presentation.ui.FeedFragment"
         android:label="FeedFragment"
         tools:layout="@layout/fragment_feed"/>
+    <fragment
+        android:id="@+id/selectPictureFragment"
+        android:name="com.checkmate.checkstagram.presentation.ui.SelectMediaFragment"
+        android:label="SelectPictureFragment"
+        tools:layout="@layout/fragment_select_media"/>
+    <fragment
+        android:id="@+id/settingCheckFragment"
+        android:name="com.checkmate.checkstagram.presentation.ui.SettingCheckFragment"
+        android:label="SettingCheckFragment"
+        tools:layout="@layout/fragment_setting_check"/>
 </navigation>
