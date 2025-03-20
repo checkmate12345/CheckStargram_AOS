@@ -1,7 +1,6 @@
 package com.checkmate.checkstagram.presentation.adapter
 
 import android.net.Uri
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
