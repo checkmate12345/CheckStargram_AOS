@@ -16,6 +16,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 
@@ -43,13 +44,13 @@ interface CheckService {
         @Body postFeedRequestDto: PostFeedRequestDto
     ): ResponseListDto<String> // todo 내려 주는 데이터 확정 되면 수정
 
-    @POST("setcheck/{username}")
+    @PUT("user/setcheck/{username}")
     suspend fun setCheckSetting(
         @Path("username") username: String,
         @Body setCheckRequestDto: SetCheckRequestDto
     ): ResponseResultDto
 
-    @GET("setcheck/{username}")
+    @GET("user/setcheck/{username}")
     suspend fun getCheckSetting(
         @Path("username") username: String,
     ): ResponseDto<CheckResponseDto>

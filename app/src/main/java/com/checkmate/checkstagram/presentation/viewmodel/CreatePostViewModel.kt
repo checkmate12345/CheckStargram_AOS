@@ -30,7 +30,7 @@ class CreatePostViewModel @Inject constructor(
             // ✅ 1. 테스트용 mediaInfos (Uri는 임시, 실제 앱에선 갤러리 선택 값 사용)
             val testMediaInfos = listOf(
                 MediaInfo("content://media/external/video/media/1000000043", "video"),
-                MediaInfo("content://media/external/images/media/1000000024", "img")
+                MediaInfo("content://media/external/images/media/1000000024", "image")
             )
 
             // ✅ 2. 테스트용 설명
@@ -69,7 +69,7 @@ class CreatePostViewModel @Inject constructor(
                 }
         }
     }
-    fun Map<String, List<String>>.toJsonString(): String {
+    private fun Map<String, List<String>>.toJsonString(): String {
         val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
         val type = Types.newParameterizedType(Map::class.java, String::class.java, List::class.java)
         val adapter = moshi.adapter<Map<String, List<String>>>(type)

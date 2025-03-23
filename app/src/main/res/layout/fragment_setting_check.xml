@@ -39,9 +39,8 @@
             android:layout_marginTop="44dp"
             android:layout_marginStart="@dimen/side_margin"
             android:text="@string/sc_danger_check"
-            android:textSize="16sp"
+            android:textAppearance="@style/text_medium_bold"
             android:textColor="@color/white"
-            android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/sc_toolbar"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -58,42 +57,18 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_danger1"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/cigarette"
                 app:layout_constraintStart_toStartOf="@id/cl_danger"
-                app:layout_constraintEnd_toStartOf="@id/btn_danger2"
+
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_danger2"
-                style="@style/CheckButton"
-                android:text="@string/lighter"
+                style="@style/SelectorCheckButton"
+                android:text="@string/alcohol"
                 app:layout_constraintStart_toEndOf="@id/btn_danger1"
-                app:layout_constraintEnd_toStartOf="@id/btn_danger3"
-                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_danger3"
-                style="@style/CheckButton"
-                android:text="@string/soju"
-                app:layout_constraintStart_toEndOf="@id/btn_danger2"
-                app:layout_constraintEnd_toStartOf="@id/btn_danger4"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_danger4"
-                style="@style/CheckButton"
-                android:text="@string/whiskey"
-                app:layout_constraintStart_toEndOf="@id/btn_danger3"
-                app:layout_constraintEnd_toStartOf="@id/btn_danger5"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_danger5"
-                style="@style/CheckButton"
-                android:text="@string/beer"
-                app:layout_constraintStart_toEndOf="@id/btn_danger4"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -125,7 +100,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_brand1"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/louisvuitton"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -133,7 +108,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_brand2"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/chanel"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_brand1"
@@ -141,7 +116,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_brand3"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/hermes"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_brand2"
@@ -149,19 +124,17 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_brand4"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/gucci"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btn_brand3"
-                app:layout_constraintEnd_toStartOf="@id/btn_brand5" />
+                app:layout_constraintTop_toBottomOf="@id/btn_brand1"
+                app:layout_constraintStart_toStartOf="@id/btn_brand1" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_brand5"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/dior"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/btn_brand4"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/btn_brand1"
+                app:layout_constraintStart_toEndOf="@id/btn_brand4" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -192,7 +165,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_it1"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/apple"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -200,7 +173,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_it2"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/samsung"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_it1" />
@@ -234,7 +207,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_food1"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/cocacola"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -242,7 +215,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_food2"
-                style="@style/CheckButton"
+                style="@style/SelectorCheckButton"
                 android:text="@string/pepsi"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/btn_food1" />

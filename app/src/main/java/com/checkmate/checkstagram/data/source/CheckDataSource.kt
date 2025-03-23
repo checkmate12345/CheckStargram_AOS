@@ -1,6 +1,8 @@
 package com.checkmate.checkstagram.data.source
 
 import com.checkmate.checkstagram.data.model.request.LoginRequestDto
+import com.checkmate.checkstagram.data.model.request.SetCheckRequestDto
+import com.checkmate.checkstagram.data.model.response.CheckResponseDto
 import com.checkmate.checkstagram.data.model.response.FeedResponseDto
 import com.checkmate.checkstagram.data.model.response.LoginResponseDto
 import com.checkmate.checkstagram.data.model.response.ResponseDto
@@ -66,6 +68,26 @@ class CheckDataSource @Inject constructor(
             } else {
                 Result.failure(Exception(response.message))
             }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun setCheck(username: String, dto: SetCheckRequestDto): Result<ResponseResultDto> {
+        return try {
+            val response = service.setCheckSetting(username, dto)
+            if (response.success) Result.success(response)
+            else Result.failure(Exception(response.message))
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun getCheck(username: String): Result<ResponseDto<CheckResponseDto>> {
+        return try {
+            val response = service.getCheckSetting(username)
+            if (response.success && response.data != null) Result.success(response)
+            else Result.failure(Exception(response.message))
         } catch (e: Exception) {
             Result.failure(e)
         }

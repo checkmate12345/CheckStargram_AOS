@@ -1,5 +1,8 @@
 package com.checkmate.checkstagram.domain.repository
 
+import com.checkmate.checkstagram.data.model.request.SetCheckRequestDto
+import com.checkmate.checkstagram.data.model.response.CheckResponseDto
+
 import com.checkmate.checkstagram.domain.model.FeedInfo
 import okhttp3.MultipartBody
 
@@ -17,4 +20,8 @@ interface CheckRepository {
         mediasMeta: String,
         description: String?
     ): Result<Unit>
+
+    suspend fun setCheckSetting(username: String, dto: SetCheckRequestDto): Result<String>
+
+    suspend fun getCheckSetting(username: String): Result<CheckResponseDto>
 }

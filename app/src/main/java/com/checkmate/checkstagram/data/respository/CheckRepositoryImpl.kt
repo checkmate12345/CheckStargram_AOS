@@ -1,5 +1,7 @@
 package com.checkmate.checkstagram.data.respository
 
+import com.checkmate.checkstagram.data.model.request.SetCheckRequestDto
+import com.checkmate.checkstagram.data.model.response.CheckResponseDto
 import com.checkmate.checkstagram.data.source.CheckDataSource
 import com.checkmate.checkstagram.domain.model.FeedInfo
 import com.checkmate.checkstagram.domain.repository.CheckRepository
@@ -31,5 +33,19 @@ class CheckRepositoryImpl @Inject constructor(
             .mapCatching {
                 if (!it.success) throw Exception(it.message)
             }
+    }
+
+    override suspend fun setCheckSetting(username: String, dto: SetCheckRequestDto): Result<String> {
+        return dataSource.setCheck(username, dto).mapCatching { it.message }
+    }
+
+    override suspend fun getCheckSetting(username: String): Result<CheckResponseDto> {
+        return dataSource.getCheck(username).fold(
+            onSuccess = {
+                it.data?.let { data -> Result.success(data) }
+                    ?: Result.failure(Exception("데이터가 없습니다"))
+            },
+            onFailure = { Result.failure(it) }
+        )
     }
 }

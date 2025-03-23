@@ -30,10 +30,7 @@
     <string name="sc_toolbar_title">체크 항목 설정</string>
     <string name="sc_danger_check">위험 요소 체크</string>
     <string name="cigarette">담배</string>
-    <string name="lighter">라이터</string>
-    <string name="soju">소주</string>
-    <string name="whiskey">양주</string>
-    <string name="beer">맥주</string>
+    <string name="alcohol">술</string>
     <string name="sc_brand_check">브랜드 체크</string>
     <string name="louisvuitton">루이비통</string>
     <string name="hermes">에르메스</string>
@@ -45,7 +42,7 @@
     <string name="samsung">삼성</string>
     <string name="sc_food_check">식 · 음료 체크</string>
     <string name="cocacola">코카콜라</string>
-    <string name="pepsi">펩시콜라</string>
+    <string name="pepsi">펩시</string>
     <string name="sc_set_btn">체크 항목으로 설정하기</string>
 
 <!--  login  -->

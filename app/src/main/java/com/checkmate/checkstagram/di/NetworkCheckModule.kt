@@ -14,6 +14,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 private const val BASE_URL = "http://13.209.227.9:8080"
@@ -41,6 +42,9 @@ object NetworkCheckModule {
         }
 
         return OkHttpClient.Builder()
+            .connectTimeout(60, TimeUnit.SECONDS)   // 연결 시도 시간
+            .readTimeout(60, TimeUnit.SECONDS)      // 서버 응답 대기 시간
+            .writeTimeout(60, TimeUnit.SECONDS)     // 서버로 데이터 전송 대기 시간
             .addInterceptor(logger)
             .build()
     }
