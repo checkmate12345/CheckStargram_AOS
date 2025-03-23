@@ -38,7 +38,7 @@ class MediaRepositoryImpl @Inject constructor() : MediaRepository {
 
                 val (contentUri, typeString) = when (mediaTypeInt) {
                     MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE ->
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI to "img"
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI to "image"
 
                     MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO ->
                         MediaStore.Video.Media.EXTERNAL_CONTENT_URI to "video"

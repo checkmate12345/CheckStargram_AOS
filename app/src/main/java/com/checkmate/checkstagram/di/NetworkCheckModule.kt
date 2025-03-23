@@ -42,9 +42,9 @@ object NetworkCheckModule {
         }
 
         return OkHttpClient.Builder()
-            .connectTimeout(60, TimeUnit.SECONDS)   // 연결 시도 시간
-            .readTimeout(60, TimeUnit.SECONDS)      // 서버 응답 대기 시간
-            .writeTimeout(60, TimeUnit.SECONDS)     // 서버로 데이터 전송 대기 시간
+            .connectTimeout(120, TimeUnit.SECONDS)   // 연결 시도 시간
+            .readTimeout(120, TimeUnit.SECONDS)      // 서버 응답 대기 시간
+            .writeTimeout(120, TimeUnit.SECONDS)     // 서버로 데이터 전송 대기 시간
             .addInterceptor(logger)
             .build()
     }
