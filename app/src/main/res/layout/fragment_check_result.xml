@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:background="@color/primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cp_main"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary">
+
+            <!--  Toolbar  -->
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/tb_cr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/x_white_icon"
+                app:navigationIconTint="@color/black"
+                app:title="@string/cr_title"
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/text_big_bold"
+                android:elevation="2dp"
+                app:menu="@menu/cp_menu_toolbar"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!--  업로드 이미지 영역  -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cr_media"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                android:paddingVertical="24dp"
+                app:layout_constraintTop_toBottomOf="@id/tb_cr"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:listitem="@layout/item_cp_media"
+                tools:itemCount="2" />
+
+            <!--  Divider 1  -->
+            <View
+                android:id="@+id/cr_divider1"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                android:background="@color/primary_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_cr_media" />
+
+            <!--  문구 추가 영역  -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_cr_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:minHeight="48dp"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:textAppearance="@style/text_small_bold"
+                android:textColor="@color/white"
+                android:inputType="textMultiLine"
+                android:gravity="top"
+                android:background="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cr_divider1" />
+
+            <!--  Divider 2  -->
+            <View
+                android:id="@+id/cr_divider2"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/primary_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_cr_text" />
+
+
+            <!--  AI 게시물 검사 항목 설정 layout  -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_cr_ai_error"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:background="@drawable/rounded_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cr_divider2">
+
+                <!--  1) 검사 아이콘 -->
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_cr_ai_error_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="12dp"
+                    android:src="@drawable/warning_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!--  2) 검사 제목 텍스트  -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_cr_ai_error_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/cr_ai_error_title"
+                    android:textAppearance="@style/text_small_bold"
+                    android:textColor="@color/red"
+                    app:layout_constraintStart_toEndOf="@id/iv_cr_ai_error_icon"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tv_cp_ai_set_content" />
+
+                <!--  3) 검사 내용 텍스트  -->
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_cp_ai_set_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="12dp"
+                    android:text="@string/cr_ai_error_detail"
+                    android:textAppearance="@style/text_small_regular"
+                    app:layout_constraintStart_toStartOf="@id/tv_cr_ai_error_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_cr_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:backgroundTint="@color/primary_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cl_cr_ai_error"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/item_tv_cp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cr_video"
+                    android:textAppearance="@style/text_small_bold"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center"
+                    android:drawableStart="@drawable/video_icon"
+                    android:drawablePadding="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cr_video"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:layout_marginTop="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_cr_video" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_cr_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:backgroundTint="@color/primary_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_cr_video"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/item_tv_cr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cr_picture"
+                    android:textAppearance="@style/text_small_bold"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center"
+                    android:drawableStart="@drawable/photo_icon"
+                    android:drawablePadding="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_cr_image"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:layout_marginTop="20dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_cr_image" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_cr_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:backgroundTint="@color/primary_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rv_cr_image"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/item_tv_cr_descripton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cr_description"
+                    android:textAppearance="@style/text_small_bold"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center"
+                    android:drawableStart="@drawable/text_icon"
+                    android:drawablePadding="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_cr_description_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:backgroundTint="@color/primary_light"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_cr_description"
+                >
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/item_tv_cr_description_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cr_description_detail"
+                    android:textAppearance="@style/text_small_bold"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginVertical="4dp"
+                    android:gravity="center"
+                    android:drawableStart="@drawable/warning_icon"
+                    android:drawablePadding="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_cr_description"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="@dimen/side_margin"
+                    android:background="@color/primary_light"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cv_cr_description_detail"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_censured_sentence"
+                    tools:itemCount="3"/>
+
+            <!--  공유하기 버튼  -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_cp_next"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_marginHorizontal="@dimen/side_margin"
+                android:backgroundTint="@color/primary_dark"
+                android:text="@string/cr_next"
+                android:textColor="@color/white"
+                android:textAppearance="@style/text_medium_bold"
+                app:cornerRadius="8dp"
+                android:insetBottom="0dp"
+                android:insetLeft="0dp"
+                android:insetRight="0dp"
+                android:insetTop="0dp"
+                app:strokeWidth="0dp"
+                android:stateListAnimator="@null"
+                android:layout_marginTop="12dp"
+                app:layout_constraintTop_toBottomOf="@id/rv_cr_description"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -23,7 +23,7 @@
     <string name="textview_sharing">함께 공유할 위치...</string>
     <string name="description_option_icon">옵션 더 보기 아이콘</string>
     <string name="textview_option">옵선 더 보기</string>
-    <string name="button_sharing">공유하기</string>
+    <string name="button_sharing">검사하기</string>
 
     <!--  set_check_list  -->
     <string name="sc_title">set check</string>
@@ -60,5 +60,16 @@
     <string name="sp_toolbar_title">새 게시물</string>
     <string name="sp_next">다음</string>
     <string name="sp_recent">최근 항목 ></string>
+
+<!--  check_result  -->
+    <string name="cr_title">검사 결과</string>
+    <string name="cr_ai_error_title">AI 게시물 검사 결과 인터넷 상 논란 발견</string>
+    <string name="cr_ai_error_detail">아래 내용을 확인하고 게시물을 수정하는 것을 추천드려요.</string>
+    <string name="cr_video">비디오</string>
+    <string name="cr_picture">사진</string>
+    <string name="cr_description">글</string>
+    <string name="cr_description_detail">논란이 되는 글은 빨간색으로 표시 됩니다.</string>
+    <string name="cr_next">다음</string>
+    <string name="cr_log">위험 요소 로그</string>
 
 </resources>

@@ -2,7 +2,6 @@ package com.checkmate.checkstagram.presentation.ui
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -42,8 +41,15 @@ class CreatePostFragment: BaseFragment<FragmentCreatePostBinding> (
 
         binding.btnCpNext.setOnClickListener {
             viewModel.checkFeed(
-                onSuccess = {
-                    findNavController().navigate(R.id.action_createPostFragment_to_feedFragment)
+                onSuccess = { checkResult ->
+                    val action = CreatePostFragmentDirections
+                        .actionCreatePostFragmentToCheckResultFragment(
+                            navArgs.MediaInfoList,
+                            checkResult,
+                            viewModel.description.value
+                        )
+                    findNavController().navigate(action)
+
                 },
                 onFailure = {
                     Toast.makeText(requireContext(), "검사 실패: ${it.message}", Toast.LENGTH_SHORT).show()

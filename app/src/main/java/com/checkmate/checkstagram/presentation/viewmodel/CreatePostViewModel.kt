@@ -3,12 +3,16 @@ package com.checkmate.checkstagram.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.checkmate.checkstagram.data.model.request.FeedCheckResponseDto
 import com.checkmate.checkstagram.data.model.response.CheckResponseDto
 import com.checkmate.checkstagram.domain.model.MediaInfo
 import com.checkmate.checkstagram.domain.usecase.CheckFeedUseCase
 import com.checkmate.checkstagram.domain.usecase.GetCheckSettingUseCase
+import com.checkmate.checkstagram.presentation.model.CensuredSentence
+import com.checkmate.checkstagram.presentation.model.CheckMediaResult
+import com.checkmate.checkstagram.presentation.model.CheckResultResponse
+import com.checkmate.checkstagram.presentation.model.Timeline
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -56,7 +60,7 @@ class CreatePostViewModel @Inject constructor(
     }
 
     fun checkFeed(
-        onSuccess: () -> Unit,
+        onSuccess: (CheckResultResponse) -> Unit,
         onFailure: (Throwable) -> Unit
     ) {
         viewModelScope.launch {
@@ -79,13 +83,15 @@ class CreatePostViewModel @Inject constructor(
 
             result?.onSuccess {
                 Log.d("FeedCheck ✅", "성공: ${it.message}")
-                onSuccess()
+                val checkResult = it.toParcelModel()  // ✅ 여기서 변환
+                onSuccess(checkResult)                // ✅ 결과 전달
             }?.onFailure { e ->
                 Log.e("FeedCheck ❌", "실패: ${e.message}")
                 onFailure(e)
             }
         }
     }
+
 
     private fun CheckResponseDto.toJsonString(): String {
         val moshi = Moshi.Builder()
@@ -94,4 +100,24 @@ class CreatePostViewModel @Inject constructor(
         val adapter = moshi.adapter(CheckResponseDto::class.java)
         return adapter.toJson(this)
     }
+
+    private fun FeedCheckResponseDto.toParcelModel(): CheckResultResponse {
+        return CheckResultResponse(
+            message = message,
+            censuredSentences = censuredSentences.map {
+                CensuredSentence(it.text, it.censured)
+            },
+            results = results.map { dto ->
+                CheckMediaResult(
+                    resultUrl = dto.resultUrl,
+                    mediaType = dto.mediaType,
+                    resultObject = dto.resultObject,
+                    timeline = dto.timeline.mapValues { entry ->
+                        entry.value.map { Timeline(it.start, it.end) }
+                    }
+                )
+            }
+        )
+    }
+
 }
