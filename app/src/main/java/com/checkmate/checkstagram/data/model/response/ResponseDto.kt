@@ -12,13 +12,13 @@ data class ResponseResultDto(
 @JsonClass(generateAdapter = true)
 data class ResponseDto<T>(
     @Json(name="success") val success: Boolean,
-    @Json(name="message") val message: String,
+    @Json(name="message") val message: String = "",
     @Json(name="data") val data: T?
 )
 
 @JsonClass(generateAdapter = true)
 data class ResponseListDto<T>(
     @Json(name="success") val success: Boolean,
-    @Json(name="message") val message: String,
-    @Json(name="data") val dat: List<T>
+    @Json(name="message") val message: String = "",
+    @Json(name="data") val data: List<T>
 )

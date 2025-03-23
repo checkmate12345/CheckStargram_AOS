@@ -1,7 +1,7 @@
 package com.checkmate.checkstagram.domain.usecase
 
 import android.content.Context
-import com.checkmate.checkstagram.data.respository.MediaRepository
+import com.checkmate.checkstagram.domain.repository.MediaRepository
 import com.checkmate.checkstagram.domain.model.MediaInfo
 import javax.inject.Inject
 

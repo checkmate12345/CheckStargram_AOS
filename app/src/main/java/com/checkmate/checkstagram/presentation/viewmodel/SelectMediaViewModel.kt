@@ -31,7 +31,7 @@ class SelectMediaViewModel @Inject constructor(
     fun loadMedia(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
             val media = pickMediaUseCase(context)
-            Log.d("jomi", "media : $media")
+            Log.d("jomi","media : $media")
             _mediaList.value = media
             setPreview()
         }

@@ -25,14 +25,16 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(
 
     override fun initListener() {
         binding.btnLogin.setOnClickListener{
-            moveToFeed()
+            viewModel.login()
         }
     }
 
     override fun initCollector() {
         repeatOnStarted(viewLifecycleOwner) {
-            viewModel.userName.collectLatest { username ->
-                Log.d("jomi", username)
+            viewModel.isLogin.collectLatest { isLogin ->
+                if (isLogin) {
+                    moveToFeed()
+                }
             }
         }
     }

@@ -70,8 +70,9 @@ dependencies {
     // Retrofit & moshi
     implementation(libs.retrofit.core) // Retrofit 기본 라이브러리
     implementation(libs.retrofit.gson) // JSON 변환을 위한 Gson 컨버터
-    implementation(libs.moshi)
     implementation(libs.retrofit.moshi)
+    implementation (libs.moshi)
+    implementation (libs.moshi.kotlin)
     kapt(libs.moshi.codegen)
 
     // Glide

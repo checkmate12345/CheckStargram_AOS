@@ -48,7 +48,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tb_cp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                tools:listitem="@layout/item_cp_image"
+                tools:listitem="@layout/item_cp_media"
                 tools:itemCount="2" />
 
             <!--  Divider 1  -->

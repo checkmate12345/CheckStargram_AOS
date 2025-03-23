@@ -1,8 +1,10 @@
+package com.checkmate.checkstagram.data.respository
+
 import android.content.ContentUris
 import android.content.Context
 import android.provider.MediaStore
-import com.checkmate.checkstagram.data.respository.MediaRepository
 import com.checkmate.checkstagram.domain.model.MediaInfo
+import com.checkmate.checkstagram.domain.repository.MediaRepository
 import javax.inject.Inject
 
 class MediaRepositoryImpl @Inject constructor() : MediaRepository {

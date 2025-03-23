@@ -40,6 +40,6 @@ class CreatePostFragment: BaseFragment<FragmentCreatePostBinding> (
 
     private fun initRV() {
         binding.rvCpMedia.adapter = createPostMediaAdapter
-        createPostMediaAdapter.submitList(navArgs.selectedMediaList.toList())
+//        createPostMediaAdapter.submitList(navArgs.selectedMediaList.toList())
     }
 }

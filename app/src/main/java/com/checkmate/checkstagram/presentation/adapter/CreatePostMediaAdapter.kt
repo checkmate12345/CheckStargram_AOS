@@ -7,20 +7,20 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.checkmate.checkstagram.R
-import com.checkmate.checkstagram.databinding.ItemCpImageBinding
+import com.checkmate.checkstagram.databinding.ItemCpMediaBinding
 import com.checkmate.checkstagram.presentation.model.SelectedMediaInfo
 
 class CreatePostMediaAdapter : ListAdapter<SelectedMediaInfo, CreatePostMediaAdapter.ViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder(ItemCpImageBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        ViewHolder(ItemCpMediaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
     inner class ViewHolder(
-        private val binding : ItemCpImageBinding
+        private val binding : ItemCpMediaBinding
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(item: SelectedMediaInfo){
             Glide.with(binding.root)

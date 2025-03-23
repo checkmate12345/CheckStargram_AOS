@@ -65,21 +65,23 @@ class SelectMediaFragment: BaseFragment<FragmentSelectMediaBinding>(
             viewModel.preview.collectLatest { media ->
                 media ?: return@collectLatest
 
-                binding.pvSpSelectedVideo.player = player
-                binding.pvSpSelectedVideo.visibility = View.VISIBLE
-                binding.ivSpSelectedImage.visibility = View.GONE
-
-                // 1️⃣ 기존 플레이어 해제
-                player?.release()
-                player = null
 
                 if (media.mediaType == "video") {
-                    player = ExoPlayer.Builder(requireContext()).build().apply {
-                        setMediaItem(MediaItem.fromUri(Uri.parse(media.mediaUrl)))
-                        prepare()
-                        playWhenReady = true
-                        repeatMode = Player.REPEAT_MODE_ONE
-                        volume = 0f
+                    releasePlayer()
+
+                    binding.pvSpSelectedVideo.player = player
+                    binding.pvSpSelectedVideo.visibility = View.VISIBLE
+                    binding.ivSpSelectedImage.visibility = View.GONE
+
+                    player = ExoPlayer.Builder(requireContext()).build().also { exoPlayer ->
+                        binding.pvSpSelectedVideo.player = exoPlayer
+
+                        val mediaItem = MediaItem.fromUri(media.mediaUrl)
+                        exoPlayer.setMediaItem(mediaItem)
+                        exoPlayer.repeatMode = Player.REPEAT_MODE_ONE
+                        exoPlayer.volume = 0f
+                        exoPlayer.prepare()
+                        exoPlayer.playWhenReady = true
                     }
 
                 } else {
@@ -103,20 +105,26 @@ class SelectMediaFragment: BaseFragment<FragmentSelectMediaBinding>(
     }
 
     private fun setupToolbar() {
-//        binding.tbSp.setOnMenuItemClickListener { menuItem ->
-//            when (menuItem.itemId) {
-//                R.id.action_next -> {
-//                    val selectedMediaList = viewModel.selectedMediaList.value
-//                    val selectedMediaParcelableList = selectedMediaList.map { SelectedMediaInfo(it) }.toTypedArray()
-//                    if (selectedMediaList.isEmpty().not()) {
-//                        val action = SelectMediaFragmentDirections.actionSelectMediaFragmentToCreatePostFragment(selectedMediaParcelableList)
-//                        findNavController().navigate(action)
-//                    }
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
+        binding.tbSp.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_next -> {
+                    val selectedMediaList = viewModel.selectedMediaList.value.toTypedArray()
+                    if (selectedMediaList.isEmpty().not()) {
+                        val action = SelectMediaFragmentDirections.actionSelectMediaFragmentToCreatePostFragment(
+                            selectedMediaList
+                        )
+                        findNavController().navigate(action)
+                    }
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun releasePlayer() {
+        player?.release()
+        player = null
     }
 
     private fun initRV() {

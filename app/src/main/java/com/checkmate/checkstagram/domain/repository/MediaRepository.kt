@@ -1,7 +1,6 @@
-package com.checkmate.checkstagram.data.respository
+package com.checkmate.checkstagram.domain.repository
 
 import android.content.Context
-import android.net.Uri
 import com.checkmate.checkstagram.domain.model.MediaInfo
 
 interface MediaRepository {
