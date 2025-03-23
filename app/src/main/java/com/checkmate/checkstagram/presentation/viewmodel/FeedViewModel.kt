@@ -16,45 +16,4 @@ class FeedViewModel @Inject constructor(
     private val _feedInfo = MutableStateFlow<List<FeedInfo>>(emptyList())
     val feedInfo : StateFlow<List<FeedInfo>> get() = _feedInfo
 
-    init {
-        getFeedInfo()
-    }
-
-    private fun getFeedInfo() {
-        viewModelScope.launch {
-            val tempList = listOf( FeedInfo(
-                username = "for_everyoung10",
-                profileImage = "",
-                medias = emptyList(),
-                description = "",
-                likes = 1234,
-                comments = 4321,
-                createdAt = "2025년 10월 12일",
-                updatedAt = ""
-            ),
-                FeedInfo(
-                    username = "for_everyoung10",
-                    profileImage = "",
-                    medias = emptyList(),
-                    description = "",
-                    likes = 1234,
-                    comments = 4321,
-                    createdAt = "2025년 10월 12일",
-                    updatedAt = ""
-                ),
-                FeedInfo(
-                    username = "for_everyoung10",
-                    profileImage = "",
-                    medias = emptyList(),
-                    description = "",
-                    likes = 1234,
-                    comments = 4321,
-                    createdAt = "2025년 10월 12일",
-                    updatedAt = ""
-                )
-            )
-
-            _feedInfo.value = tempList
-        }
-    }
 }

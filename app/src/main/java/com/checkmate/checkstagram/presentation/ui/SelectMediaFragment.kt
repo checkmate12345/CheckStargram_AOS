@@ -1,7 +1,9 @@
 package com.checkmate.checkstagram.presentation.ui
 
+import PickMediaAdapter
 import android.Manifest
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +11,15 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.media3.common.MediaItem
+import androidx.media3.common.PlaybackException
+import androidx.media3.common.Player
+import androidx.media3.exoplayer.ExoPlayer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
 import com.checkmate.checkstagram.R
 import com.checkmate.checkstagram.databinding.FragmentSelectMediaBinding
-import com.checkmate.checkstagram.presentation.adapter.PickMediaAdapter
 import com.checkmate.checkstagram.presentation.model.SelectedMediaInfo
 import com.checkmate.checkstagram.presentation.viewmodel.SelectMediaViewModel
 import com.checkmate.checkstagram.util.repeatOnStarted
@@ -27,9 +32,10 @@ class SelectMediaFragment: BaseFragment<FragmentSelectMediaBinding>(
     FragmentSelectMediaBinding::inflate
 ) {
     private val viewModel: SelectMediaViewModel by viewModels()
-    private val pickMediaAdapter = PickMediaAdapter{ selectedUri ->
-        viewModel.toggleSelection(selectedUri)
+    private val pickMediaAdapter = PickMediaAdapter{ selectedMedia ->
+        viewModel.toggleSelection(selectedMedia)
     }
+    private var player: ExoPlayer? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,35 +57,66 @@ class SelectMediaFragment: BaseFragment<FragmentSelectMediaBinding>(
     override fun initCollector() {
         repeatOnStarted(viewLifecycleOwner) {
             viewModel.mediaList.collectLatest { list ->
-                Log.d("jomi", "Media List Updated: ${list.size} items")
                 pickMediaAdapter.submitList(list)
             }
         }
 
         repeatOnStarted(viewLifecycleOwner) {
-            viewModel.preview.collectLatest { uri ->
-                Glide.with(requireContext())
-                    .load(uri)
-                    .into(binding.ivSpSelectedImage)
+            viewModel.preview.collectLatest { media ->
+                media ?: return@collectLatest
+
+                binding.pvSpSelectedVideo.player = player
+                binding.pvSpSelectedVideo.visibility = View.VISIBLE
+                binding.ivSpSelectedImage.visibility = View.GONE
+
+                // 1️⃣ 기존 플레이어 해제
+                player?.release()
+                player = null
+
+                if (media.mediaType == "video") {
+                    player = ExoPlayer.Builder(requireContext()).build().apply {
+                        setMediaItem(MediaItem.fromUri(Uri.parse(media.mediaUrl)))
+                        prepare()
+                        playWhenReady = true
+                        repeatMode = Player.REPEAT_MODE_ONE
+                        volume = 0f
+                    }
+
+                } else {
+                    binding.pvSpSelectedVideo.player = null
+                    binding.pvSpSelectedVideo.visibility = View.GONE
+                    binding.ivSpSelectedImage.visibility = View.VISIBLE
+
+                    Glide.with(requireContext())
+                        .load(media.mediaUrl)
+                        .into(binding.ivSpSelectedImage)
+                }
             }
         }
     }
 
+    override fun onDestroyView() {
+        binding.pvSpSelectedVideo.player = null
+        player?.release()
+        player = null
+        super.onDestroyView()
+    }
+
     private fun setupToolbar() {
-        binding.tbSp.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.action_next -> {
-                    val selectedMediaList = viewModel.selectedMediaList.value
-                    val selectedMediaParcelableList = selectedMediaList.map { SelectedMediaInfo(it) }.toTypedArray()
-                    if (selectedMediaList.isEmpty().not()) {
-                        val action = SelectMediaFragmentDirections.actionSelectMediaFragmentToCreatePostFragment(selectedMediaParcelableList)
-                        findNavController().navigate(action)
-                    }
-                    true
-                }
-                else -> false
-            }
-        }
+//        binding.tbSp.setOnMenuItemClickListener { menuItem ->
+//            when (menuItem.itemId) {
+//                R.id.action_next -> {
+//                    val selectedMediaList = viewModel.selectedMediaList.value
+//                    val selectedMediaParcelableList = selectedMediaList.map { SelectedMediaInfo(it) }.toTypedArray()
+//                    if (selectedMediaList.isEmpty().not()) {
+//                        val action = SelectMediaFragmentDirections.actionSelectMediaFragmentToCreatePostFragment(selectedMediaParcelableList)
+//                        findNavController().navigate(action)
+//                    }
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
     }
 
     private fun initRV() {

@@ -5,7 +5,8 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.checkmate.checkstagram.domain.usecase.PickImageUseCase
+import com.checkmate.checkstagram.domain.model.MediaInfo
+import com.checkmate.checkstagram.domain.usecase.PickMediaUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,36 +16,36 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SelectMediaViewModel @Inject constructor(
-    val pickImageUseCase: PickImageUseCase
+    val pickMediaUseCase: PickMediaUseCase
 ): ViewModel() {
 
-    private val _mediaList = MutableStateFlow<List<Uri>>(emptyList())
-    val mediaList : StateFlow<List<Uri>> get() = _mediaList
+    private val _mediaList = MutableStateFlow<List<MediaInfo>>(emptyList())
+    val mediaList : StateFlow<List<MediaInfo>> get() = _mediaList
 
-    private val _selectedMediaList = MutableStateFlow<List<Uri>>(emptyList())
-    val selectedMediaList : StateFlow<List<Uri>> get() = _selectedMediaList
+    private val _selectedMediaList = MutableStateFlow<List<MediaInfo>>(emptyList())
+    val selectedMediaList : StateFlow<List<MediaInfo>> get() = _selectedMediaList
 
-    private val _preview = MutableStateFlow<Uri?>(null)
-    val preview : StateFlow<Uri?> get() = _preview
+    private val _preview = MutableStateFlow<MediaInfo?>(null)
+    val preview : StateFlow<MediaInfo?> get() = _preview
 
     fun loadMedia(context: Context) {
         viewModelScope.launch(Dispatchers.IO) {
-            val mediaUris = pickImageUseCase(context)
-            Log.d("jomi", mediaUris.toString())
-            _mediaList.value = mediaUris
+            val media = pickMediaUseCase(context)
+            Log.d("jomi", "media : $media")
+            _mediaList.value = media
             setPreview()
         }
     }
 
 
-    fun toggleSelection(uri: Uri) {
+    fun toggleSelection(mediaInfo: MediaInfo) {
         val currentList = _selectedMediaList.value.toMutableList()
 
-        if (currentList.contains(uri)) {
-            currentList.remove(uri)
+        if (currentList.contains(mediaInfo)) {
+            currentList.remove(mediaInfo)
         } else {
-            if (currentList.size < 10) { // 최대 10개 선택 가능
-                currentList.add(uri)
+            if (currentList.size < 10) {
+                currentList.add(mediaInfo)
             }
         }
         _selectedMediaList.value = currentList
@@ -57,9 +58,9 @@ class SelectMediaViewModel @Inject constructor(
             val list = selectedMediaList.value
 
             if (list.isEmpty()) {
-                _preview.emit(all.first())
+                _preview.emit(all.firstOrNull())
             } else {
-                _preview.emit(list.last())
+                _preview.emit(list.lastOrNull())
             }
         }
     }
