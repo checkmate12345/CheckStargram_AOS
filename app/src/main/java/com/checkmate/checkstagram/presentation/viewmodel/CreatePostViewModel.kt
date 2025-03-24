@@ -50,12 +50,19 @@ class CreatePostViewModel @Inject constructor(
 
     private fun initSetting() {
         viewModelScope.launch {
-            val result = getCheckSettingUseCase("wonyoung")
-            if (result.isSuccess) {
-                _checkSetting.emit(result.getOrThrow())
-            } else {
-                Log.d("jomi", "getCheckSetting fail : ${result.exceptionOrNull()}")
-            }
+//            val result = getCheckSettingUseCase("wonyoung")
+//            if (result.isSuccess) {
+//                Log.d("Jomi", "setting : ${result.getOrThrow()}")
+//                _checkSetting.emit(result.getOrThrow())
+//            } else {
+//                Log.d("jomi", "getCheckSetting fail : ${result.exceptionOrNull()}")
+//            }
+            _checkSetting.emit(CheckResponseDto(
+                risk = listOf("담배", "술"),
+                bag = listOf("루이비통", "샤넬", "에르메스", "구찌", "디올"),
+                phone = listOf("아이폰", "갤럭시"),
+                coke = listOf("코카콜라", "펩시")
+            ))
         }
     }
 

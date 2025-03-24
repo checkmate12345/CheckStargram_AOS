@@ -2,6 +2,7 @@ package com.checkmate.checkstagram.presentation.ui
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -40,6 +41,7 @@ class CreatePostFragment: BaseFragment<FragmentCreatePostBinding> (
         }
 
         binding.btnCpNext.setOnClickListener {
+            Log.d("Jomi", "onclick")
             viewModel.checkFeed(
                 onSuccess = { checkResult ->
                     val action = CreatePostFragmentDirections

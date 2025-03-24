@@ -51,12 +51,12 @@ class SettingCheckViewModel @Inject constructor(
                 selectedCoke.value,
             )
             Log.d("jomi", "seleted : $request")
-            val result = setCheckSettingUseCase("wonyoung", request)
-            if (result.isSuccess) {
-                Log.d("Jomi", "✅ 저장 성공: ${result.getOrThrow()}")
-            } else {
-                Log.e("Jomi", "❌ 저장 실패: ${result.exceptionOrNull()}")
-            }
+//            val result = setCheckSettingUseCase("wonyoung", request)
+//            if (result.isSuccess) {
+//                Log.d("Jomi", "✅ 저장 성공: ${result.getOrThrow()}")
+//            } else {
+//                Log.e("Jomi", "❌ 저장 실패: ${result.exceptionOrNull()}")
+//            }
         }
     }
 
