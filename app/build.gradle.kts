@@ -19,6 +19,11 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags += ""
+            }
+        }
     }
 
     buildTypes {
@@ -39,6 +44,12 @@ android {
     }
     buildFeatures {
         dataBinding = true
+    }
+    externalNativeBuild {
+        cmake {
+            path = file("src/main/cpp/CMakeLists.txt")
+            version = "3.22.1"
+        }
     }
 }
 
@@ -70,8 +81,9 @@ dependencies {
     // Retrofit & moshi
     implementation(libs.retrofit.core) // Retrofit 기본 라이브러리
     implementation(libs.retrofit.gson) // JSON 변환을 위한 Gson 컨버터
-    implementation(libs.moshi)
     implementation(libs.retrofit.moshi)
+    implementation (libs.moshi)
+    implementation (libs.moshi.kotlin)
     kapt(libs.moshi.codegen)
 
     // Glide
@@ -88,6 +100,11 @@ dependencies {
     // navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    implementation (libs.androidx.media3.exoplayer)
+    implementation (libs.androidx.media3.ui)
+
+    implementation(libs.android.lottie)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

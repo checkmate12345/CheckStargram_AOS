@@ -28,8 +28,8 @@
             android:id="@+id/action_selectMediaFragment_to_createPostFragment"
             app:destination="@id/createPostFragment">
             <argument
-                android:name="selectedMediaList"
-                app:argType="com.checkmate.checkstagram.presentation.model.SelectedMediaInfo[]"
+                android:name="MediaInfoList"
+                app:argType="com.checkmate.checkstagram.domain.model.MediaInfo[]"
                 app:nullable="true"/>
         </action>
     </fragment>
@@ -49,14 +49,78 @@
         android:label="CreatePostFragment"
         tools:layout="@layout/fragment_create_post">
         <argument
-            android:name="selectedMediaList"
-            app:argType="com.checkmate.checkstagram.presentation.model.SelectedMediaInfo[]"
-            app:nullable="false"/>
+            android:name="MediaInfoList"
+            app:argType="com.checkmate.checkstagram.domain.model.MediaInfo[]"
+            app:nullable="true"/>
         <action
             android:id="@+id/action_createPostFragment_to_settingCheckFragment"
             app:destination="@id/settingCheckFragment" />
         <action
             android:id="@+id/action_createPostFragment_to_feedFragment"
             app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_createPostFragment_to_checkResultFragment"
+            app:destination="@id/checkResultFragment" >
+            <argument
+                android:name="MediaInfoList"
+                app:argType="com.checkmate.checkstagram.domain.model.MediaInfo[]"
+                app:nullable="true"/>
+            <argument
+                android:name="CheckResult"
+                app:argType="com.checkmate.checkstagram.presentation.model.CheckResultResponse"
+                app:nullable="true" />
+            <argument
+                android:name="description"
+                app:argType="string"
+                app:nullable="true" />
+        </action>
+
+    </fragment>
+    <fragment
+        android:id="@+id/checkResultFragment"
+        android:name="com.checkmate.checkstagram.presentation.ui.CheckResultFragment"
+        android:label="CheckResultFragment"
+        tools:layout="@layout/fragment_check_result">
+        <argument
+            android:name="MediaInfoList"
+            app:argType="com.checkmate.checkstagram.domain.model.MediaInfo[]"
+            app:nullable="true"/>
+        <argument
+            android:name="CheckResult"
+            app:argType="com.checkmate.checkstagram.presentation.model.CheckResultResponse"
+            app:nullable="true" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_checkResultFragment_to_checkImageDetailFragment"
+            app:destination="@id/checkImageDetailFragment" />
+        <action
+            android:id="@+id/action_checkResultFragment_to_checkVideoDetailFragment"
+            app:destination="@id/checkVideoDetailFragment" >
+            <argument
+                android:name="CheckMediaResult"
+                app:argType="com.checkmate.checkstagram.presentation.model.CheckMediaResult" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/checkImageDetailFragment"
+        android:name="com.checkmate.checkstagram.presentation.ui.CheckImageDetailFragment"
+        android:label="CheckImageDetailFragment"
+        tools:layout="@layout/fragment_check_image_detail">
+        <argument
+            android:name="CheckMediaResult"
+            app:argType="com.checkmate.checkstagram.presentation.model.CheckMediaResult"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/checkVideoDetailFragment"
+        android:name="com.checkmate.checkstagram.presentation.ui.CheckVideoDetailFragment"
+        android:label="CheckVideoDetailFragment" >
+        <argument
+            android:name="CheckMediaResult"
+            app:argType="com.checkmate.checkstagram.presentation.model.CheckMediaResult"
+            />
     </fragment>
 </navigation>

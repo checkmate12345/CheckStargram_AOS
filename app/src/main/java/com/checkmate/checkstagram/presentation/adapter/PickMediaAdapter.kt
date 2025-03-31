@@ -1,69 +1,69 @@
-package com.checkmate.checkstagram.presentation.adapter
-
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.checkmate.checkstagram.R
 import com.checkmate.checkstagram.databinding.ItemPickMediaBinding
+import com.checkmate.checkstagram.domain.model.MediaInfo
 
 class PickMediaAdapter(
-    private val onItemSelected: (Uri) -> Unit
-): ListAdapter<Uri, PickMediaAdapter.ViewHolder>(diffUtil) {
+    private val onItemSelected: (MediaInfo) -> Unit
+) : ListAdapter<MediaInfo, PickMediaAdapter.ViewHolder>(diffUtil) {
 
-    private val selectedItems = mutableListOf<Uri>()
+    private val selectedItems = mutableListOf<MediaInfo>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PickMediaAdapter.ViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ItemPickMediaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    inner class ViewHolder(
-        private val binding: ItemPickMediaBinding
-    ): RecyclerView.ViewHolder(binding.root) {
-        fun bind (uri: Uri) {
-            Glide.with(binding.root)
-                .load(uri)
-                .placeholder(R.drawable.tag_icon)
-                .into(binding.itemIvFeedImage)
-
-            val index = selectedItems.indexOf(uri)
-
-            if (index != -1) {
-                binding.itemTvFeedIndex.text = (index + 1).toString() // 1부터 시작
-                binding.itemTvFeedIndex.isSelected = true // ✅ 선택되었을 때 파란색 배경
+    inner class ViewHolder(private val binding: ItemPickMediaBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: MediaInfo) {
+            // 1️⃣ 이미지 vs 동영상 구분하여 썸네일 로드
+            if (item.mediaType == "video") {
+                Glide.with(binding.root)
+                    .load(item.mediaUrl) // 또는 썸네일 추출 logic
+                    .frame(1000000) // 1초 지점 썸네일
+                    .into(binding.itemIvFeedImage)
             } else {
-                binding.itemTvFeedIndex.text = "" // 선택되지 않으면 텍스트 제거
-                binding.itemTvFeedIndex.isSelected = false // ✅ 선택되지 않았을 때 반투명 배경
+                Glide.with(binding.root)
+                    .load(item.mediaUrl)
+                    .into(binding.itemIvFeedImage)
             }
 
-            // ✅ 이미지 클릭 시 선택/해제 로직 추가
+            // 2️⃣ 선택 인덱스 표시
+            val index = selectedItems.indexOf(item)
+            if (index != -1) {
+                binding.itemTvFeedIndex.text = (index + 1).toString()
+                binding.itemTvFeedIndex.isSelected = true
+            } else {
+                binding.itemTvFeedIndex.text = ""
+                binding.itemTvFeedIndex.isSelected = false
+            }
+
+            // 3️⃣ 클릭 처리
             binding.itemIvFeedImage.setOnClickListener {
-                if (selectedItems.contains(uri)) {
-                    selectedItems.remove(uri)
+                if (selectedItems.contains(item)) {
+                    selectedItems.remove(item)
                 } else {
-                    selectedItems.add(uri)
+                    selectedItems.add(item)
                 }
-                notifyDataSetChanged() // ✅ RecyclerView 갱신
-                onItemSelected(uri) // ✅ 콜백 호출 (선택된 리스트 업데이트)
+                notifyDataSetChanged()
+                onItemSelected(item)
             }
         }
-
     }
 
     companion object {
-        private val diffUtil = object : DiffUtil.ItemCallback<Uri>() {
-            override fun areItemsTheSame(oldItem: Uri, newItem: Uri): Boolean =
-                oldItem === newItem
+        private val diffUtil = object : DiffUtil.ItemCallback<MediaInfo>() {
+            override fun areItemsTheSame(oldItem: MediaInfo, newItem: MediaInfo): Boolean =
+                oldItem.mediaUrl == newItem.mediaUrl
 
-            override fun areContentsTheSame(oldItem: Uri, newItem: Uri): Boolean =
+            override fun areContentsTheSame(oldItem: MediaInfo, newItem: MediaInfo): Boolean =
                 oldItem == newItem
-
         }
     }
 }

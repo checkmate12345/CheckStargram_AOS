@@ -8,7 +8,7 @@ import java.util.Date
 data class PostFeedResponseDto(
     @Json(name = "username") val username : String,
     @Json(name = "profileImage") val profileImage : String,
-    @Json(name = "medias") val medias: List<MediasDto>,
+    @Json(name = "medias") val medias: List<MediaDto>,
     @Json(name = "description") val description: String,
     @Json(name = "likes") val likes : Int = 0,
     @Json(name = "comments") val comments : Int = 0,

@@ -41,7 +41,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintDimensionRatio="1:1"
+            android:visibility="gone"
             tools:src="@tools:sample/backgrounds/scenic"/>
+
+        <androidx.media3.ui.PlayerView
+            android:id="@+id/pv_sp_selected_video"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/side_margin"
+            app:resize_mode="fill"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/tb_sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:use_controller="false" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/bar_media_preview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="iv_sp_selected_image,pv_sp_selected_video" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_sp_recent"
@@ -52,7 +73,7 @@
             android:paddingHorizontal="@dimen/side_margin"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_sp_selected_image">
+            app:layout_constraintTop_toBottomOf="@id/bar_media_preview">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_sp_recent"
