@@ -6,6 +6,11 @@
   <img src="https://img.shields.io/badge/AI-BERT | YOLOv8 | ResNet18-purple" />
 </p>
 
+https://github.com/user-attachments/assets/28c2d12d-1d98-4895-8d6d-967353e9764a
+
+
+
+
 ## 📌 프로젝트 개요
 
 - **프로젝트명** : CheckStagram✔️  
